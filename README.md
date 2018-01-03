@@ -1,2 +1,2 @@
 # Allez-Y Brewing
-Landing page
+Landing page for Allez-Y Brewing website
