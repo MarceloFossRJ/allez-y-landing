@@ -6,8 +6,18 @@ if(isset($_POST['submit'])){
     $email = $_POST['email'];
     if(!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL) === false){
         // MailChimp API credentials
-        $apiKey = '';
-        $listID = '';
+        static $apiKey;
+        static $listID;
+        static $connection;
+
+        if(!isset($connection)) {
+           // Load configuration as an array. Use the actual location of your configuration file
+            $config = parse_ini_file('../private/config.ini');
+            $connection = '1' ;
+            $apiKey = $config['apiKey']
+            $listID = $config['listID']
+        }
+
 
         // MailChimp API URL
         $memberID = md5(strtolower($email));

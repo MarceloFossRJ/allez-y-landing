@@ -6,11 +6,6 @@
 ?>
 
 <!DOCTYPE HTML>
-<!--
-	Eventually by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
 		<title>Eventually by HTML5 UP</title>
@@ -27,10 +22,10 @@
 			<header id="header">
 				<h1><img src="images/allezy_logo_white.png" class="logo"></h1>
 				<p>
-                A cerveja do Recreio dos Bandeirantes<br />
-				Disponível para você no primeiro semestre de 2018.<br />
-                Acompanhe-nos nas redes sociais, e assine nossa newsletter para notícias.
-                </p>
+           A cerveja do Recreio dos Bandeirantes<br />
+           Disponível para você no primeiro semestre de 2018.<br />
+           Acompanhe-nos nas redes sociais, e assine nossa newsletter para notícias.
+        </p>
 			</header>
 
 		<!-- Signup Form -->
@@ -58,4 +53,3 @@
 
 	</body>
 </html>
-

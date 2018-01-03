@@ -1,3 +1,8 @@
+server "ethanol.f055.com", :app, :web, :db, :primary => true
+set :deploy_to, "/var/www/html/allezy-landing"
+
+
+
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
