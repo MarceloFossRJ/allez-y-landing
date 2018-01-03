@@ -1,12 +1,12 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.10.1"
-require 'capistrano/ext/multistage'
+#require 'capistrano/ext/multistage'
 
 set :application, "allez-y-landing"
 
 set :scm, :git
-set :repository, "git@github.com:MarceloFossRJ/allez-y-landing.git"
-set :scm_passphrase, ""
+set :repo_url, "git@github.com:MarceloFossRJ/allez-y-landing.git"
+#set :scm_passphrase, ""
 
 set :user, "foss"
 

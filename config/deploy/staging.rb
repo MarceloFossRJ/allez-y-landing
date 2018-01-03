@@ -1,4 +1,4 @@
-server "ethanol.f055.com", :app, :web, :db, :primary => true
+server "ethanol.f055.com"
 set :deploy_to, "/var/www/html/allezy-landing"
 
 
