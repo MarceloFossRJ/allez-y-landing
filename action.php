@@ -12,7 +12,7 @@ if(isset($_POST['submit'])){
 
         if(!isset($connection)) {
            // Load configuration as an array. Use the actual location of your configuration file
-            $config = parse_ini_file('includes/config.ini');
+            $config = parse_ini_file('../config.ini');
             $connection = '1' ;
             $apiKey = $config['apiKey']
             $listID = $config['listID']
