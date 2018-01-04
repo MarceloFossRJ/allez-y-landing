@@ -1,6 +1,7 @@
 server "ethanol.f055.com"
 set :deploy_to, "/var/www/html/allezy-landing"
 
+upload! '/config.ini' , '//var/www/html/allezy-landing/config.ini'
 
 
 # server-based syntax

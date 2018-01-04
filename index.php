@@ -39,11 +39,11 @@
 				<ul class="icons">
 					<li><a href="https://twitter.com/AllezYBrewing" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
 					<li><a href="https://www.instagram.com/allezy.brewing/" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-					<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-					<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+					<li><a href="https://www.facebook.com/allezy.brewing/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+					<!--li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li-->
 				</ul>
 				<ul class="copyright">
-					<li>&copy; Allez-y Brewing 2018.</li><li>Credits: <a href="http://html5up.net">HTML5 UP</a></li>
+					<li>&copy; Allez-y Brewing 2018.</li>
 				</ul>
 			</footer>
 
