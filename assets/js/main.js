@@ -148,7 +148,7 @@
 						$message._hide();
 
 					// Disable submit.
-						$submit.disabled = true;
+					//	$submit.disabled = true;
 
 					// Process form.
 					// Note: Doesn't actually do anything yet (other than report back with a "thank you"),
@@ -159,7 +159,7 @@
 								$form.reset();
 
 							// Enable submit.
-								$submit.disabled = false;
+						//		$submit.disabled = false;
 
 							// Show message.
 								$message._show('success', 'Thank you!');

@@ -1,8 +1,12 @@
 server "ethanol.f055.com"
 set :deploy_to, "/var/www/html/allezy-landing"
 
-upload! '/config.ini' , '//var/www/html/allezy-landing/config.ini'
-
+#on hosts do |host|
+#  upload! '/config.ini' , '//var/www/html/allezy-landing/config.ini'
+#end
+#run_locally do
+#  execute"rsync -ah --progress config.ini /var/www/html/allezy-landing/config.ini"
+#end
 
 # server-based syntax
 # ======================
