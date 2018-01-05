@@ -29,7 +29,7 @@ if (!empty($email)) {
   curl_setopt($mch_api, CURLOPT_SSL_VERIFYPEER, false);
   curl_setopt($mch_api, CURLOPT_POSTFIELDS, json_encode($data) ); // send data in json
 
-  $result = curl_exec($mch_api)
+  $result = curl_exec($mch_api);
 
   $httpCode = curl_getinfo($mch_api, CURLINFO_HTTP_CODE);
 
