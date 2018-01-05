@@ -10,19 +10,12 @@ if (!empty($email)) {
     'status'        => $status
   );
 
-  try {
-    $config = parse_ini_file('../config.ini');
-    $apiKey = $config['apiKey']
-    $listID = $config['listID']
-  }
-  catch (HttpException $ex) {
-    echo __FILE__ . ':' . __LINE__ . PHP_EOL;
-    echo $ex;
-    exit;
-  }
+  $config = parse_ini_file('config.ini');
+  $apiKey = $config['apiKey'];
+  $listID = $config['listID'];
 
   $dataCenter = substr($apiKey,strpos($apiKey,'-')+1);
-  $url = 'https://' . $dataCenter . '.api.mailchimp.com/3.0/lists/' . $listID . '/members/' . md5(strtolower($data['email_address']))
+  $url = 'https://' . $dataCenter . '.api.mailchimp.com/3.0/lists/' . $listID . '/members/' . md5(strtolower($data['email_address']));
 
   $mch_api = curl_init(); // initialize cURL connection
 
@@ -36,14 +29,7 @@ if (!empty($email)) {
   curl_setopt($mch_api, CURLOPT_SSL_VERIFYPEER, false);
   curl_setopt($mch_api, CURLOPT_POSTFIELDS, json_encode($data) ); // send data in json
 
-  try {
-    $result = curl_exec($mch_api) or die(curl_error($mch_api));
-  }
-  catch (HttpException $ex) {
-    echo __FILE__ . ':' . __LINE__ . PHP_EOL;
-    echo $ex;
-    exit;
-  }
+  $result = curl_exec($mch_api)
 
   $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
