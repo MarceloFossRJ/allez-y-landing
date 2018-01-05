@@ -31,10 +31,10 @@ if (!empty($email)) {
 
   $result = curl_exec($mch_api)
 
-  $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+  $httpCode = curl_getinfo($mch_api, CURLINFO_HTTP_CODE);
 
   if ($httpCode == 200) {
-    $_SESSION['msg'] = '<p style="color: #34A853">You have successfully subscribed to CodexWorld.</p>';
+    $_SESSION['msg'] = '<p style="color: #34A853">You have successfully subscribed to Allez-y Brewing.</p>';
   }
   else {
     switch ($httpCode) {
