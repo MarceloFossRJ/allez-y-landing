@@ -1,8 +1,7 @@
-<?php session_start(); // place it on the top of the script ?>
+<?php session_start(); ?>
 <?php
     $statusMsg = !empty($_SESSION['msg'])?$_SESSION['msg']:'';
     unset($_SESSION['msg']);
-    echo $statusMsg;
 ?>
 
 <!DOCTYPE HTML>
@@ -43,7 +42,7 @@
 					<!--li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li-->
 				</ul>
 				<ul class="copyright">
-					<li>&copy; Allez-y Brewing 2018.</li>
+					<li>&copy; Allez-y Brewing 2018.</li> <li><?php echo $statusMsg; ?></li>
 				</ul>
 			</footer>
 

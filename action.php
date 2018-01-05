@@ -1,70 +1,70 @@
 <?php
 session_start();
-if(isset($_POST['submit'])){
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $email = $_POST['email'];
-    if(!empty($email) && !filter_var($email, FILTER_VALIDATE_EMAIL) === false){
-        // MailChimp API credentials
-        static $apiKey;
-        static $listID;
-        static $connection;
+$email = $_POST['email'];
+$status = 'subscribed';
 
-        if(!isset($connection)) {
-           // Load configuration as an array. Use the actual location of your configuration file
-            $config = parse_ini_file('../config.ini');
-            $connection = '1' ;
-            $apiKey = $config['apiKey']
-            $listID = $config['listID']
-        }
+if (!empty($email)) {
+  $data = array(
+    'apikey'        => $apikey,
+    'email_address' => $email,
+    'status'        => $status
+  );
 
+  try {
+    $config = parse_ini_file('../config.ini');
+    $apiKey = $config['apiKey']
+    $listID = $config['listID']
+  }
+  catch (HttpException $ex) {
+    echo __FILE__ . ':' . __LINE__ . PHP_EOL;
+    echo $ex;
+    exit;
+  }
 
-        // MailChimp API URL
-        $memberID = md5(strtolower($email));
-        $dataCenter = substr($apiKey,strpos($apiKey,'-')+1);
-        $url = 'https://' . $dataCenter . '.api.mailchimp.com/3.0/lists/' . $listID . '/members/' . $memberID;
+  $dataCenter = substr($apiKey,strpos($apiKey,'-')+1);
+  $url = 'https://' . $dataCenter . '.api.mailchimp.com/3.0/lists/' . $listID . '/members/' . md5(strtolower($data['email_address']))
 
-        // member information
-        $json = json_encode([
-            'email_address' => $email,
-            'status'        => 'subscribed',
-            'merge_fields'  => [
-                'FNAME'     => $fname,
-                'LNAME'     => $lname
-            ]
-        ]);
+  $mch_api = curl_init(); // initialize cURL connection
 
-        // send a HTTP POST request with curl
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_USERPWD, 'user:' . $apiKey);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
-        $result = curl_exec($ch);
-        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+  curl_setopt($mch_api, CURLOPT_URL, $url);
+  curl_setopt($mch_api, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Authorization: Basic '.base64_encode( 'user:'.$apiKey )));
+  curl_setopt($mch_api, CURLOPT_USERAGENT, 'PHP-MCAPI/2.0');
+  curl_setopt($mch_api, CURLOPT_RETURNTRANSFER, true); // return the API response
+  curl_setopt($mch_api, CURLOPT_CUSTOMREQUEST, 'PUT'); // method PUT
+  curl_setopt($mch_api, CURLOPT_TIMEOUT, 10);
+  curl_setopt($mch_api, CURLOPT_POST, true);
+  curl_setopt($mch_api, CURLOPT_SSL_VERIFYPEER, false);
+  curl_setopt($mch_api, CURLOPT_POSTFIELDS, json_encode($data) ); // send data in json
 
-        // store the status message based on response code
-        if ($httpCode == 200) {
-            $_SESSION['msg'] = '<p style="color: #34A853">You have successfully subscribed to CodexWorld.</p>';
-        } else {
-            switch ($httpCode) {
-                case 214:
-                    $msg = 'You are already subscribed.';
-                    break;
-                default:
-                    $msg = 'Some problem occurred, please try again.';
-                    break;
-            }
-            $_SESSION['msg'] = '<p style="color: #EA4335">'.$msg.'</p>';
-        }
-    }else{
-        $_SESSION['msg'] = '<p style="color: #EA4335">Please enter valid email address.</p>';
-    }
+  try {
+    $result = curl_exec($mch_api) or die(curl_error($mch_api));
+  }
+  catch (HttpException $ex) {
+    echo __FILE__ . ':' . __LINE__ . PHP_EOL;
+    echo $ex;
+    exit;
+  }
+
+  $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+  if ($httpCode == 200) {
+    $_SESSION['msg'] = '<p style="color: #34A853">You have successfully subscribed to CodexWorld.</p>';
+  }
+  else {
+    switch ($httpCode) {
+      case 214:
+        $msg = 'You are already subscribed.';
+        break;
+      default:
+        $msg = 'Some problem occurred, please try again.';
+        break;
+      }
+    $_SESSION['msg'] = '<p style="color: #EA4335">'.$msg.'</p>';
+  }
+
+  curl_close($mch_api);
 }
 // redirect to homepage
 //
-//header('location:index.php');
+header('location:index.php');
+?>
