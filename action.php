@@ -52,5 +52,5 @@ if (!empty($email)) {
 }
 // redirect to homepage
 //
-header('location:index.php');
+//header('location:index.php');
 ?>

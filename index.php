@@ -35,7 +35,7 @@
 			</header>
 
 		<!-- Signup Form -->
-			<form id="signup-form">
+			<form id="signup-form" method="post" action="action.php">
 				<input type="email" name="email" id="email" placeholder="Email Address" />
 				<input type="submit" value="Sign Up" />
 			</form>

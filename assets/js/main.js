@@ -148,6 +148,7 @@
 	   							  $message._show('success', 'Thank you!');
 								 }, 750);
 	            }
+							$message._show('success', 'Thank you!3');
            });
 /*
 					event.stopPropagation();
