@@ -137,18 +137,18 @@
 				$form.addEventListener('submit', function(event) {
 
 					 e.preventDefault();
+					 window.setTimeout(function() {
+							$form.reset();
+							$message._show('success', 'Thank you!');
+					 }, 750);
+
            $.ajax({
 	            type: 'post',
 	            url: 'action.php',
 	            data: $('form').serialize(),
 	            success: function () {
 		             alert('form was submitted');
-								 window.setTimeout(function() {
-  		 						  $form.reset();
-	   							  $message._show('success', 'Thank you!');
-								 }, 750);
 	            }
-							$message._show('success', 'Thank you!3');
            });
 /*
 					event.stopPropagation();
