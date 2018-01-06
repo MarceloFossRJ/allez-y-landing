@@ -34,7 +34,7 @@ if (!empty($email)) {
   $httpCode = curl_getinfo($mch_api, CURLINFO_HTTP_CODE);
 
   if ($httpCode == 200) {
-    $_SESSION['msg'] = '<p style="color: #34A853">You have successfully subscribed to Allez-y Brewing.</p>';
+    $_SESSION['msg'] = '<p style="color: #e87658">You have successfully subscribed to Allez-y Brewing.</p>';
   }
   else {
     switch ($httpCode) {
@@ -45,7 +45,7 @@ if (!empty($email)) {
         $msg = 'Some problem occurred, please try again.';
         break;
       }
-    $_SESSION['msg'] = '<p style="color: #EA4335">'.$msg.'</p>';
+    $_SESSION['msg'] = '<p style="color: #e87658">'.$msg.'</p>';
   }
 
   curl_close($mch_api);
