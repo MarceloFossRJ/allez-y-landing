@@ -134,9 +134,22 @@
 			// Events.
 			// Note: If you're *not* using AJAX, get rid of this event listener.
 
-			/*
 				$form.addEventListener('submit', function(event) {
 
+					 e.preventDefault();
+           $.ajax({
+	            type: 'post',
+	            url: 'action.php',
+	            data: $('form').serialize(),
+	            success: function () {
+		             alert('form was submitted');
+								 window.setTimeout(function() {
+  		 						  $form.reset();
+	   							  $message._show('success', 'Thank you!');
+								 }, 750);
+	            }
+           });
+/*
 					event.stopPropagation();
 					event.preventDefault();
 
@@ -162,9 +175,9 @@
 								//$message._show('failure', 'Something went wrong. Please try again.');
 
 						}, 750);
-
+*/
 				});
-				*/
+
 		})();
 
 })();
