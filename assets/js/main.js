@@ -138,7 +138,7 @@
 
 					 e.preventDefault();
 
-					 $form.submit(function(){
+					 //$form.submit(function(){
 							 $.ajax({
 								 url: 'action.php',
 								 type:'POST',
@@ -147,8 +147,8 @@
 									 alert(data);
 								 }
 							 });
-							 return false;
-						 });
+							// return false;
+						 //});
 /*
 					event.stopPropagation();
 					event.preventDefault();

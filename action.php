@@ -8,7 +8,7 @@
 	} elseif( $result->status == 'subscribed' ){
 		echo 'Thank you, ' . $result->merge_fields->FNAME . '. You have subscribed successfully';
 	}
-	
+
 
 function mailchimp_subscriber_status( $email, $status){
 
