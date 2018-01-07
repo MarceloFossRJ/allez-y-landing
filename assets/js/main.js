@@ -135,21 +135,6 @@
 			// Note: If you're *not* using AJAX, get rid of this event listener.
 
 				$form.addEventListener('submit', function(event) {
-					 event.stopPropagation();
-					 event.preventDefault();
-
-					 //$form.submit(function(){
-							 $.ajax({
-								 url: 'action.php',
-								 type:'POST',
-								 data: $form.serialize(),
-								 success:function(data){
-									 alert(data);
-								 }
-							 });
-							// return false;
-						 //});
-/*
 					event.stopPropagation();
 					event.preventDefault();
 
@@ -159,23 +144,35 @@
 					// Disable submit.
 						$submit.disabled = true;
 
+						$ajax({
+							type: 'POST',
+							url: 'action.php',
+							datatype: 'html',
+							data: $(this).serialize()
+						})
+						.done(function(){
+							$message._show('success', 'Thank you!');
+						})
+						.fail(function(){
+							console.log("error");
+						});
 					// Process form.
 					// Note: Doesn't actually do anything yet (other than report back with a "thank you"),
 					// but there's enough here to piece together a working AJAX submission call that does.
 						window.setTimeout(function() {
 
 							// Reset form.
-								$form.reset();
+							//	$form.reset();
 
 							// Enable submit.
-								$submit.disabled = false;
+							//	$submit.disabled = false;
 
 							// Show message.
 								$message._show('success', 'Thank you!');
 								//$message._show('failure', 'Something went wrong. Please try again.');
 
 						}, 750);
-*/
+
 				});
 
 		})();

@@ -25,20 +25,20 @@ if (!empty($email)) {
   curl_setopt($mch_api, CURLOPT_POSTFIELDS, json_encode($data) ); // send data in json
   $result = curl_exec($mch_api);
   $httpCode = curl_getinfo($mch_api, CURLINFO_HTTP_CODE);
-  if ($httpCode == 200) {
-    $_SESSION['msg'] = '<p style="color: #e87658">You have successfully subscribed to Allez-y Brewing.</p>';
-  }
-  else {
-    switch ($httpCode) {
-      case 214:
-        $msg = 'You are already subscribed.';
-        break;
-      default:
-        $msg = 'Some problem occurred, please try again.';
-        break;
-      }
-    $_SESSION['msg'] = '<p style="color: #e87658">'.$msg.'</p>';
-  }
+//  if ($httpCode == 200) {
+//    $_SESSION['msg'] = '<p style="color: #e87658">You have successfully subscribed to Allez-y Brewing.</p>';
+//  }
+//  else {
+//    switch ($httpCode) {
+//      case 214:
+//        $msg = 'You are already subscribed.';
+//        break;
+//      default:
+//        $msg = 'Some problem occurred, please try again.';
+//        break;
+//      }
+//    $_SESSION['msg'] = '<p style="color: #e87658">'.$msg.'</p>';
+//  }
   curl_close($mch_api);
 }
 // redirect to homepage
