@@ -135,8 +135,8 @@
 			// Note: If you're *not* using AJAX, get rid of this event listener.
 
 				$form.addEventListener('submit', function(event) {
-
-					 e.preventDefault();
+					 event.stopPropagation();
+					 event.preventDefault();
 
 					 //$form.submit(function(){
 							 $.ajax({
