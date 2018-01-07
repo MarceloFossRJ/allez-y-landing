@@ -139,11 +139,10 @@
 					 e.preventDefault();
 
 					 $form.submit(function(){
-	             var mailchimpform = $(this);
 							 $.ajax({
-								 url:mailchimpform.attr('action'),
+								 url: 'action.php',
 								 type:'POST',
-								 data:mailchimpform.serialize(),
+								 data: $form.serialize(),
 								 success:function(data){
 									 alert(data);
 								 }

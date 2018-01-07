@@ -1,5 +1,16 @@
 <?php
 
+	$result = json_decode( mailchimp_subscriber_status($_POST['email'], 'subscribed'));
+	// print_r( $result );
+	if( $result->status == 400 ){
+		foreach( $result->errors as $error ) {
+			echo '<p>Error: ' . $error->message . '</p>';
+		}
+	} elseif( $result->status == 'subscribed' ){
+		echo 'Thank you, ' . $result->merge_fields->FNAME . '. You have subscribed successfully';
+	}
+
+
 function mailchimp_subscriber_status( $email, $status){
 	$data = array(
 		'apikey'        => $api_key,
@@ -30,24 +41,5 @@ function mailchimp_subscriber_status( $email, $status){
   curl_close($mch_api);
 	return $result;
 }
-
-function subscribe(){
-
-	$result = json_decode( mailchimp_subscriber_status($_POST['email'], 'subscribed'));
-	// print_r( $result );
-	if( $result->status == 400 ){
-		foreach( $result->errors as $error ) {
-			echo '<p>Error: ' . $error->message . '</p>';
-		}
-	} elseif( $result->status == 'subscribed' ){
-		echo 'Thank you, ' . $result->merge_fields->FNAME . '. You have subscribed successfully';
-	}
-	// $result['id'] - Subscription ID
-	// $result['ip_opt'] - Subscriber IP address
-	die;
-}
-
-add_action('ajax_mailchimpsubscribe','subscribe');
-add_action('ajax_nopriv_mailchimpsubscribe','subscribe');
 
 ?>
