@@ -1,5 +1,4 @@
 <?php
-
 	$result = json_decode( mailchimp_subscriber_status($_POST['email'], 'subscribed'));
 	// print_r( $result );
 	if( $result->status == 400 ){
@@ -9,18 +8,19 @@
 	} elseif( $result->status == 'subscribed' ){
 		echo 'Thank you, ' . $result->merge_fields->FNAME . '. You have subscribed successfully';
 	}
-
+	
 
 function mailchimp_subscriber_status( $email, $status){
-	$data = array(
-		'apikey'        => $api_key,
-    'email_address' => $email,
-		'status'        => $status
-	);
 
   $config = parse_ini_file('config.ini');
   $apiKey = $config['apiKey'];
   $listID = $config['listID'];
+
+  $data = array(
+		'apikey'        => $api_key,
+    'email_address' => $email,
+		'status'        => $status
+	);
 
   $dataCenter = substr($apiKey,strpos($apiKey,'-')+1);
   $url = 'https://' . $dataCenter . '.api.mailchimp.com/3.0/lists/' . $listID . '/members/' . md5(strtolower($data['email_address']));
