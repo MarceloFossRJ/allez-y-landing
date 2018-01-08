@@ -144,10 +144,10 @@
 					// Disable submit.
 						$submit.disabled = true;
 
-						$ajax({
-							type: 'POST',
-							url: 'action.php',
-							datatype: 'html',
+						$.ajax({
+							type: "POST",
+							url: "action.php",
+							datatype: "html",
 							data: $(this).serialize()
 						})
 						.done(function(){
@@ -162,7 +162,7 @@
 						window.setTimeout(function() {
 
 							// Reset form.
-							//	$form.reset();
+								$form.reset();
 
 							// Enable submit.
 							//	$submit.disabled = false;
