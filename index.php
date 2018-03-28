@@ -35,13 +35,16 @@
 		<!-- Header -->
 			<header id="header">
 				<h1><img src="images/allezy_logo_white.png" class="logo"></h1>
-				<p>
-           A cerveja do Recreio dos Bandeirantes<br />
-           Disponível para você no primeiro semestre de 2018.<br />
-           Acompanhe-nos nas redes sociais, e assine nossa newsletter para notícias.
-        </p>
-			</header>
 
+			</header>
+      <p>
+         Nativa do Recreio dos Bandeirantes no Rio de Janeiro, a Allez-y Brewing é uma cervejaria que busca<br />
+         estilos inovadores e diferentes dos existentes no mercado brasileiro, traduzindo o estilo de vida<br />
+         e o espírito da região, além experiências e sensações singulares obtidas em viagens na forma de cerveja.
+      </p>
+      <p>
+         Cadastre-se em nossa newsletter para receber novidades.
+      </p>
 		<!-- Signup Form -->
 			<form id="signup-form" method="post" action="action.php">
 				<input type="email" name="email" id="email" placeholder="Email Address" />
@@ -56,9 +59,7 @@
 					<li><a target="_blank" href="https://www.facebook.com/allezybrewing/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
 					<!--li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li-->
 				</ul>
-				<ul class="copyright">
-					<li>&copy; Allez-y Brewing 2018.</li> <li><?php echo $statusMsg; ?></li>
-				</ul>
+
 			</footer>
 
 		<!-- Scripts -->

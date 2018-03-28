@@ -1,5 +1,6 @@
 @import url(font-awesome.min.css);
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
+@import url('https://fonts.googleapis.com/css?family=Montserrat:200,400,500,600');
 
 /*
 	Eventually by HTML5 UP
@@ -10,7 +11,7 @@
 /* Reset */
 
 	.logo {
-		width: 540px;
+		width: 480px;
 	}
 	@media screen and (max-width: 1680px) {
 		.logo {
@@ -313,7 +314,7 @@
 
 	body, input, select, textarea {
 		color: rgba(255, 255, 255, 0.75);
-		font-family: "Roboto", sans-serif;
+		font-family: "Montserrat", sans-serif;
 		font-size: 16pt;
 		font-weight: 400;
 		letter-spacing: -0.01em;
